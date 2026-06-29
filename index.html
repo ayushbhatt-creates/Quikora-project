@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quikora - Groceries in Minutes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo" id="logoHome">Quikora</a>
+
+      <div class="nav-location">
+        <div class="delivery-time">Delivery in 10 minutes</div>
+        <button class="location-btn">
+          <span class="location-label">Select location</span>
+          <span class="location-arrow">▾</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search for fruits, snacks, dairy and more..."
+        />
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="login-btn">Login</button>
+
+      <button class="cart-btn" id="cartButton">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-text">Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <!-- ===== Hero / Banner ===== -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Groceries delivered in minutes.</h1>
+        <p>Fresh essentials from Quikora, right to your doorstep.</p>
+      </div>
+    </section>
+
+    <!-- ===== Categories Strip ===== -->
+    <section class="categories-section">
+      <div class="section-header">
+        <h2>Shop by category</h2>
+      </div>
+
+      <div class="category-grid">
+
+        <button class="category-card" data-category="fruits">
+          <div class="category-thumb">
+            <img src="products/cover/fruits.jpg" alt="Fruits & Vegetables" />
+          </div>
+          <span class="category-name">Fruits & Vegetables</span>
+        </button>
+
+        <button class="category-card" data-category="dairy">
+          <div class="category-thumb">
+            <img src="/products/cover/dairy.jpg" alt="Dairy & Bakery" />
+          </div>
+          <span class="category-name">Dairy & Bakery</span>
+        </button>
+
+        <button class="category-card" data-category="snacks">
+          <div class="category-thumb">
+            <img src="products/cover/snacks.jpg" alt="Snacks & Munchies" />
+          </div>
+          <span class="category-name">Snacks & Munchies</span>
+        </button>
+
+        <button class="category-card" data-category="drinks">
+          <div class="category-thumb">
+            <img src="products/cover/colddrinks.jpg" alt="Cold Drinks & Juices" />
+          </div>
+          <span class="category-name">Cold Drinks & Juices</span>
+        </button>
+
+        <button class="category-card" data-category="breakfast">
+          <div class="category-thumb">
+            <img src="products/cover/breakfast.jpg" alt="Breakfast & Cereals" />
+          </div>
+          <span class="category-name">Breakfast & Cereals</span>
+        </button>
+
+        <button class="category-card" data-category="instant">
+          <div class="category-thumb">
+            <img src="products/cover/readytoeat.jpg" alt="Instant & Ready-to-Eat" />
+          </div>
+          <span class="category-name">Instant & Ready-to-Eat</span>
+        </button>
+
+        <button class="category-card" data-category="staples">
+          <div class="category-thumb">
+            <img src="products/cover/kitchen.jpg" alt="Staples & Kitchen Essentials" />
+          </div>
+          <span class="category-name">Staples & Kitchen Essentials</span>
+        </button>
+
+        <button class="category-card" data-category="personal">
+          <div class="category-thumb">
+            <img src="products/cover/personal.jpg" alt="Personal Care" />
+          </div>
+          <span class="category-name">Personal Care</span>
+        </button>
+
+        <button class="category-card" data-category="household">
+          <div class="category-thumb">
+            <img src="products/cover/cleaning.jpg" alt="Cleaning & Household" />
+          </div>
+          <span class="category-name">Cleaning & Household</span>
+        </button>
+
+        <button class="category-card" data-category="baby">
+          <div class="category-thumb">
+            <img src="products/cover/baby.jpg" alt="Baby & Pet Care" />
+          </div>
+          <span class="category-name">Baby & Pet Care</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ===== Products Section ===== -->
+    <section class="products-section">
+      <div class="section-header">
+  <h2>Popular near you</h2>
+
+  <select id="sortSelect" style="padding:6px 10px; border-radius:6px;">
+    <option value="">Sort</option>
+    <option value="low-high">Price: Low → High</option>
+    <option value="high-low">Price: High → Low</option>
+  </select>
+</div>
+
+
+      <div class="products-grid" id="productsContainer">
+        <!-- JS will insert product cards here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= CART BAR (BOTTOM) ================= -->
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-bar-info">
+      <span id="cartBarItems">0 items</span>
+      <span>•</span>
+      <span id="cartBarTotal">₹0</span>
+    </div>
+    <button class="cart-bar-btn" id="viewCartButton">View Cart</button>
+  </div>
+
+  <!-- ================= CART OVERLAY / SIDEBAR ================= -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-panel">
+      <div class="cart-panel-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart" id="closeCart">✕</button>
+      </div>
+
+      <div class="cart-items" id="cartItemsContainer"></div>
+
+      <div class="cart-summary">
+  <div class="cart-summary-row">
+    <span>Items total</span>
+    <span id="itemsTotal">₹0</span>
+  </div>
+
+  <div class="cart-summary-row">
+    <span>Delivery fee</span>
+    <span id="deliveryFee">₹0</span>
+  </div>
+
+  <div class="cart-summary-row">
+    <strong>Grand total</strong>
+    <strong id="grandTotal">₹0</strong>
+  </div>
+
+  <!-- Payment Methods -->
+  <div class="payment-section">
+    <label>
+      <input type="radio" name="payment" value="cod" checked />
+      Cash on Delivery
+    </label>
+
+    <label>
+      <input type="radio" name="payment" value="upi" />
+      UPI
+    </label>
+
+    <input
+      type="text"
+      id="upiInput"
+      placeholder="Enter UPI ID"
+      class="upi-input"
+      style="display:none;"
+    />
+  </div>
+
+  <button class="place-order-btn" id="placeOrderButton">
+    Place Order
+  </button>
+</div>
+
+  </div>
+
+  <!-- ================= ORDER SUCCESS POPUP ================= -->
+  <div class="order-success" id="orderSuccess">
+    <div class="order-success-content">
+      <h3>Order placed 🎉</h3>
+      <p>Your order will arrive in 10 minutes.</p>
+      <button id="orderSuccessClose">Okay</button>
+    </div>
+  </div>
+  <!-- ========== ADDRESS POPUP ========== -->
+<div class="address-overlay" id="addressOverlay">
+  <div class="address-box">
+    <h3>Select Delivery Address</h3>
+
+    <input
+      type="text"
+      id="addressInput"
+      class="address-input"
+      placeholder="House No, Street, Area"
+    />
+
+    <button id="saveAddressBtn" class="address-save-btn">
+      Save & Continue
+    </button>
+
+    <button id="closeAddressBtn" class="address-close-btn">✕</button>
+  </div>
+</div>
+  <!-- Only ONE JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
