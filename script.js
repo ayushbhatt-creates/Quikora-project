@@ -219,6 +219,15 @@ const products = [
     category: "baby",
     image: "products/items/bowl.jpg"
   },
+  {
+    id: "25",
+    name: "Kurkure",
+    quantity: "75 g",
+    price: 19,
+    mrp: 20,
+    category: "snacks",
+    image: "products/items/kurkure.jpg"
+  },
 ];
 
 // ========== 2. CART SETUP ==========
