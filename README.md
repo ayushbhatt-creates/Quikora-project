@@ -4,7 +4,7 @@ Quikora is a Blinkit-inspired quick commerce web application built using **HTML,
 
 ## 🚀 Live Demo
 
-🔗 https://6a4350173352e6950c415805--illustrious-pastelito-05ebc6.netlify.app/
+🔗 https://quikora-project.netlify.app/
 
 ## ✨ Features
 
